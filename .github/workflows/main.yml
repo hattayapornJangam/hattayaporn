@@ -21,20 +21,15 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
-        working-directory: hattayaporn
 
       - name: Check Dart formatting
         run: dart format --output=none --set-exit-if-changed .
-        working-directory: hattayaporn
 
       - name: Analyze Flutter code
         run: flutter analyze
-        working-directory: hattayaporn
 
       - name: Run tests
         run: flutter test
-        working-directory: hattayaporn
 
       - name: Build APK
         run: flutter build apk
-        working-directory: hattayaporn
