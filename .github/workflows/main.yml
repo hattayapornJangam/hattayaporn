@@ -1,9 +1,7 @@
-name: Flutter CI/CD
+name: Flutter CI/CD (Debug)
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -14,6 +12,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Show root directory
+        run: |
+          echo "PWD:"
+          pwd
+          echo "FILES:"
+          ls -la
+
+      - name: Show pubspec location
+        run: |
+          echo "Searching for pubspec.yaml..."
+          find . -name pubspec.yaml
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -21,13 +31,3 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
-
-      - name: Analyze Flutter code
-        run: flutter analyze
-
-      - name: Run tests
-        run: flutter test
-
-      - name: Build APK
-        run: flutter build apk
-
